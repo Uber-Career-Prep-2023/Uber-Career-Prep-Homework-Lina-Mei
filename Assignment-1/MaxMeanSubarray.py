@@ -3,7 +3,7 @@ Question 1: MaxMeanSubarray
 Given an array of integers and an integer, k, find the maximum mean of a subarray of size k.
 
 Time complexity: O(n)
-Space complexity: O(1
+Space complexity: O(1)
 assume that there are no empty arrays
 assume that k will always be less than the size of the given array
 """
