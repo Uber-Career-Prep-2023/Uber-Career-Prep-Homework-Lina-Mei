@@ -2,6 +2,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+        self.prev = None
         
 class LinkedList:
     def __init__(self):
@@ -14,9 +15,14 @@ class LinkedList:
         :type val : int
         :rtype : Node
         """
+        if self.head is None:
+            self.head = Node(val)
+            return
         x = Node(val)
         x.next = self.head
         self.head = x
+        curr = self.head.next
+        curr.prev = self.head
         return self.head
     
     # creates new Node with data val at end
@@ -30,10 +36,13 @@ class LinkedList:
             self.head = Node(val)
             return
         else:
+            prev = None
             curr = self.head
             while curr.next:
+                prev = curr
                 curr=curr.next
             curr.next = Node(val)
+            curr.prev = prev
         
     # creates new Node with data val after Node loc
     def insertAfter(self, val, loc):
@@ -46,12 +55,15 @@ class LinkedList:
         if self.head is None:
             return
         else:
+            prev = None
             curr = self.head
             while curr.next:
+                prev = curr
                 if curr.next == loc:
                     temp = curr.next.next
+                    temp.prev = curr
                     curr.next = None
-                    curr.next = temp
+                    curr.next = temp 
                 else:
                     curr=curr.next
         
@@ -67,7 +79,9 @@ class LinkedList:
             x = None
             if self.head.next:
                 self.head = self.head.next
+                self.prev = None
             else:
+                self.next.prev = None
                 self.head = None
         return self.head
     
@@ -95,6 +109,7 @@ class LinkedList:
                 curr=curr.next
                 if curr.next == loc:
                     temp = curr.next.next
+                    temp.prev = curr
                     curr.next = None
                     curr.next = temp
         return self.head
@@ -118,14 +133,16 @@ class LinkedList:
         """ 
         :type head : Node
         """
-        prev = None
+        temp = None
         current = self.head
         while(current):
-            next = current.next
-            current.next = prev
-            prev = current
-            current = next
-        self.head = prev
+            temp = current.prev
+            current.prev = current.next
+            current.next = temp
+            current = current.prev
+            
+        if temp is not None:
+            self.head = temp.prev
         
     def reverseRecursiveHelper(self, head):
         """ 
