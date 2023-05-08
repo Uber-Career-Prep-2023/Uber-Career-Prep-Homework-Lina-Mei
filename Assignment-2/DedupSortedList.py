@@ -18,6 +18,7 @@ def DedupSortedList(list):
             list.deleteNode(curr)
         else:
             set.add(curr.data)
+        curr = curr.next
     return list
 
 def main():
@@ -35,6 +36,14 @@ def main():
     print(list)
     DedupSortedList(list)
     print(list)
+    
+    list2 = SinglyLinkedList()
+    list2.insertAtBack(8)
+    list2.insertAtBack(8)  
+    list2.insertAtBack(8)  
+    list2.insertAtBack(8)
+    DedupSortedList(list2)  
+    print(list2)  
     
     return
 main()

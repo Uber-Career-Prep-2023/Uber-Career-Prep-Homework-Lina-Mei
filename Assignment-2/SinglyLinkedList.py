@@ -85,20 +85,28 @@ class SinglyLinkedList:
         curr.next = None
             
     #deletes Node loc; returns head
-    def deleteNode(self, loc):
+    def deleteNode(self, loc: Node):
         """ 
-        :type self : Node
+        :type self : SinglyLinkedList
         :type loc : Node
         :rtype : Node
         """
-        if self.head is None:
+        curr = self.head        
+        if curr is None:
             return None
+        if curr == loc:
+            self.head = curr.next
+            return self.head
         
-        curr = self.head
         while (curr):
             if curr.next == loc:
-                temp = curr.next.next
-                curr.next = temp
+                if curr.next.next:
+                    temp = curr.next.next
+                    curr.next = temp
+                    break
+                else:
+                    curr.next = None
+            curr = curr.next
         return self.head
     
     #returns length of the list
