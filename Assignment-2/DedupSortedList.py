@@ -1,24 +1,27 @@
 from SinglyLinkedList import *
-from DoublyLinkedList import *
 
 """ 
 Given a sorted singly linked list, remove any duplicates so that no value appears more than once.
 
-Time Complexity:
-Space Complexity:
+Time Complexity: O(N) where N represents the number of elements in the tree
+Space Complexity: O(N) 
 
+10 minutes taken total
+
+Explanation:
+    The time complexity is O(N) because we have to traverse through all the nodes in the tree to remove duplicates
+    The space complexity is O(1) because we do not need new space allocation at all. We create a variable at most which runs at constant time.
 """
 
 def DedupSortedList(list):
     curr = list.head
-    set = {curr.data}
-    curr = curr.next
-    while curr:
-        if curr.data in set:
-            list.deleteNode(curr)
+    while curr.next:
+        if curr.next.data == curr.data:
+            temp = curr.next.next
+            list.deleteNode(curr.next)
+            curr.next = temp
         else:
-            set.add(curr.data)
-        curr = curr.next
+            curr = curr.next
     return list
 
 def main():
