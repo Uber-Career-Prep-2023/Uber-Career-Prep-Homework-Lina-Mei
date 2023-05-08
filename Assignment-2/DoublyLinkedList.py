@@ -1,9 +1,10 @@
 """ 
 Copy-paste your implementation from Question 1 and modify it. Your Node struct should have an additional prev reference as well as a next.
 
-Time Complexity:
-Space Complexity:
+Time Complexity: O(N) where N is the length of the list because it needs to visit each node once
+Space Complexity: O(N) because of the recursive call
 
+~1.5 hour taken total
 
 """
 
@@ -152,20 +153,28 @@ class DoublyLinkedList:
             
         if temp is not None:
             self.head = temp.prev
+            
+    def reverse_helper(node: Node) -> Node:
+        if not node or not node.next:
+            return node
         
-    def reverseRecursive(self):       
-        head = self.head
-        if not head:
-            return None
+        next_node = node.next
+        new_head = reverse_helper(next_node)
+        
+        next_node.next = node
+        node.prev = next_node
+        node.next = None
+        
+        return new_head    
     
-        temp = head.next
-        head.next = head.prev
-        head.prev = temp
-    
-        if not head.prev:
+    def reverseRecursive(head: Node) -> Node:
+        if not head or not head.next:
             return head
-    
-        return head.prev.reverseRecursive()
+        
+        new_head = reverse_helper(head)
+        new_head.prev = None
+        return new_head
+        
 
     # Returns the linked list in display format
     def __str__(self):
@@ -187,7 +196,7 @@ def main():
     print(list)
     list.reverseIterative()
     print(list)
-    list.reverseRecursive()
+    list.reverseRecursive(list.head)
     print(list)
 
 main()
