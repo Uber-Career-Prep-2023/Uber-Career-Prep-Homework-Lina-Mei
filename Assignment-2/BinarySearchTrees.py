@@ -62,37 +62,43 @@ class BinarySearchTree:
             
         
     # deletes the Node with data val, if it exists
-    def delete(self, val): 
-        """ 
-        :type self : BinarySearchTree
-        :type val : int
-        :rtype : void
-        """
-        if self == None:
-            return self
-        if val < self.left.val:
-            return self.left.delete(val)
-        elif val > self.right.val:
-            return self.right.delete(val)
+    def delete(root, val):
+        # Base Case
+        if root is None:
+            return root
+    
+        if val < root.val:
+            root.left = root.left.delete(val)
+    
+        elif(val > root.val):
+            root.right = root.right.delete(val)
+    
         else:
-            
-            # When there is no child / 1 child
-            if self.left is None:
-                temp = self.right
-                self = None
+    
+            # Node with only one child or no child
+            if root.left is None:
+                temp = root.right
+                root = None
                 return temp
     
-            elif self.right is None:
-                temp = self.left
-                self = None
+            elif root.right is None:
+                temp = root.left
+                root = None
                 return temp
-
-            # when there are two children
-            temp = min(self.right)
-            self.val = temp.val
-            self.right = self.right.delete(temp.val)
-            
-        return self
+    
+            # Node with two children:
+            # Get the inorder successor
+            # (smallest in the right subtree)
+            temp = min(root.right)
+    
+            # Copy the inorder successor's
+            # content to this node
+            root.key = temp.key
+    
+            # Delete the inorder successor
+            root.right = root.right.delete(temp.key)
+    
+        return root
 
 def main():
     # Driver code from geeksforgeeks
@@ -111,8 +117,13 @@ def main():
     BST.insert(60)
     BST.insert(80)
 
-    print(BST.min())
-    print(BST.max())
+    print(BST.min()) # 20
+    print(BST.max()) # 80
+    
+    BST.delete(80)
+    print(BST.max()) # 70
+
+    
     print(BST.contains(30)) # true
     print(BST.contains(0)) # false
     
