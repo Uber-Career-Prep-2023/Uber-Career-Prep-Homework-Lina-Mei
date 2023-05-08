@@ -1,5 +1,3 @@
-from SinglyLinkedList import *
-
 """ 
 Given a sorted singly linked list, remove any duplicates so that no value appears more than once.
 
@@ -12,6 +10,7 @@ Explanation:
     The time complexity is O(N) because we have to traverse through all the nodes in the tree to remove duplicates
     The space complexity is O(1) because we do not need new space allocation at all. We create a variable at most which runs at constant time.
 """
+from SinglyLinkedList import *
 
 def DedupSortedList(list):
     curr = list.head
