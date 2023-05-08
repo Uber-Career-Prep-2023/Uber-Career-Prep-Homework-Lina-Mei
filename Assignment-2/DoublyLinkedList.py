@@ -168,6 +168,15 @@ class DoublyLinkedList:
 
         
         return
+    # Returns the linked list in display format
+    def __str__(self):
+        linkedListStr = ""
+        temp = self.head
+        while temp:
+            linkedListStr = (linkedListStr +
+                                str(temp.data) + " ")
+            temp = temp.next
+        return linkedListStr
 """
 """
 
