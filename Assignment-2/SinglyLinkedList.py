@@ -82,7 +82,9 @@ class SinglyLinkedList:
         curr = self.head
         while curr.next.next:
             curr = curr.next
+        node_deleted = curr.next
         curr.next = None
+        
             
     #deletes Node loc; returns head
     def deleteNode(self, loc: Node):
