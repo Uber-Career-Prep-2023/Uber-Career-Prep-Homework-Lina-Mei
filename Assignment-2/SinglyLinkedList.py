@@ -1,3 +1,17 @@
+""" 
+Implement the following methods. Rather than having a separate linked list class, 
+we will pass a Node struct that represents the head of the list (this is common practice in interview questions). 
+The linked list article includes a Node struct definition in a number of common languages (C++, Python, Java, JavaScript); 
+feel free to use it in your implementation. For simplicity, you can make your nodes store integers rather than generic data types.
+In each of the methods, you should use pointers in languages that support pointers (e.g., Node * in C++) or a reference in languages 
+that support references (e.g., Python).
+
+Time Complexity: O(N) where N is the length of the list because it needs to visit each node once
+Space Complexity: O(N) because of the recursive call 
+
+~1.5 hour taken total
+
+"""
 class Node:
     def __init__(self, data):
         self.data = data
@@ -140,15 +154,15 @@ class SinglyLinkedList:
 
 
     #reverses the linked list recursively (Hint: you will need a helper function)
-    def reverseRecursive(self):
-        prev = None
-        current = self.head
-        while(current is not None):
-            next = current.next
-            current.next = prev
-            prev = current
-            current = next
-        self.head = prev
+    def reverseRecursive(self: Node):
+        def reverse_helper(curr, prev):
+            if not curr:
+                return prev
+            next_node = curr.next
+            curr.next = prev
+            return reverse_helper(next_node, curr)
+        
+        self.head = reverse_helper(self.head, None)
     
     # Returns the linked list in display format
     def __str__(self):

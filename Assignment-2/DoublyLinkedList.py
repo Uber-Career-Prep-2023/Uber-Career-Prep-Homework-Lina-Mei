@@ -1,3 +1,12 @@
+""" 
+Copy-paste your implementation from Question 1 and modify it. Your Node struct should have an additional prev reference as well as a next.
+
+Time Complexity:
+Space Complexity:
+
+
+"""
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -131,7 +140,7 @@ class DoublyLinkedList:
     # reverses the linked list iteratively
     def reverseIterative(self):
         """ 
-        :type head : Node
+        :type self : Node
         """
         temp = None
         current = self.head
@@ -144,30 +153,20 @@ class DoublyLinkedList:
         if temp is not None:
             self.head = temp.prev
         
-    def reverseRecursiveHelper(self, head):
-        """ 
-        :type head : Node
-        """       
-        if self is None or self.next is None:
-            return self
-        rest = self.reverseRecursiveHelper(head.next)
-        
-        # Put first element at the end
-        head.next.next = head
-        head.next = None
- 
-        # Fix the header pointer
-        return rest
+    def reverseRecursive(self):       
+        head = self.head
+        if not head:
+            return None
+    
+        temp = head.next
+        head.next = head.prev
+        head.prev = temp
+    
+        if not head.prev:
+            return head
+    
+        return head.prev.reverseRecursive()
 
-    #reverses the linked list recursively (Hint: you will need a helper function)
-    def reverseRecursive(self):
-        """ 
-        :type head : Node
-        """
-        reverseRecursiveHelper(self, self.head)
-
-        
-        return
     # Returns the linked list in display format
     def __str__(self):
         linkedListStr = ""
@@ -177,6 +176,19 @@ class DoublyLinkedList:
                                 str(temp.data) + " ")
             temp = temp.next
         return linkedListStr
-"""
-"""
+
+def main():
+    # Start with the empty list
+    list = DoublyLinkedList()
+    list.insertAtFront(2)
+    list.insertAtFront(4)
+    list.insertAtFront(8)
+    list.insertAtFront(10)
+    print(list)
+    list.reverseIterative()
+    print(list)
+    list.reverseRecursive()
+    print(list)
+
+main()
 
