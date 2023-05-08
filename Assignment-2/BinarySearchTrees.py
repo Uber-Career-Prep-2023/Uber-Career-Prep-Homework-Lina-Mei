@@ -1,4 +1,14 @@
 """ 
+In each of the methods, use pointers in languages that support pointers (e.g., Node * in C++) or  
+references in languages that support references (e.g., Python). Your Node struct will be the same 
+as for your doubly linked list except the two pointers/references should be left and right rather 
+than next and prev. Note that the delete method is more difficult than the insert method; you won’t 
+need it for the rest of the assignment so either stop or get help from your mentor if you are stuck after 40 minutes.
+
+Time Complexity: O(N) for insertion, deletion, contains where N is the number of elements in the tree
+Space Complexity: O(N) where N is the number of elements in the tree
+
+~ 1 hour total
 
 """
 
