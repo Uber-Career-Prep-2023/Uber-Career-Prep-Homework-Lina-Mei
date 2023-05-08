@@ -3,7 +3,7 @@ class Node:
         self.data = data
         self.next = None
         
-class LinkedList:
+class SinglyLinkedList:
     def __init__(self):
         self.head = None
     
@@ -76,11 +76,13 @@ class LinkedList:
         """ 
         :type head : Node
         """
-        if self.head:
-            curr = self.head
-            while curr.next:
-                curr=curr.next
-            curr = None
+        if self.head is None:
+            self.head = None
+            
+        curr = self.head
+        while curr.next.next:
+            curr = curr.next
+        curr.next = None
             
     #deletes Node loc; returns head
     def deleteNode(self, loc):
@@ -89,14 +91,14 @@ class LinkedList:
         :type loc : Node
         :rtype : Node
         """
-        if self.head:
-            curr = self.head
-            while curr.next:
-                curr=curr.next
-                if curr.next == loc:
-                    temp = curr.next.next
-                    curr.next = None
-                    curr.next = temp
+        if self.head is None:
+            return None
+        
+        curr = self.head
+        while (curr):
+            if curr.next == loc:
+                temp = curr.next.next
+                curr.next = temp
         return self.head
     
     #returns length of the list
@@ -149,20 +151,21 @@ class LinkedList:
         return linkedListStr
     
 def main():
-    ll = LinkedList()
+    ll = SinglyLinkedList()
     ll.insertAtFront(1)
     ll.insertAtFront(2)
-    print(ll.length())
+    print(ll.length()) # 2
     ll.deleteBack()
-    print(ll.length())
-    print(ll.head.data)
+    print(ll.length()) # 1
+    print(ll.head.data) # 2
     
     ll.insertAtFront(3)
     ll.insertAtFront(4)
     ll.insertAtFront(5) 
-    ll.reverseIterative()
-    print(ll)
+    ll.reverseIterative() 
+    print(ll) # 2 3 4 5
     ll.reverseRecursive()
-    print(ll)
+    print(ll) # 5 4 3 2
+    print("ran SinglyLinkedList.py")
 
 main()

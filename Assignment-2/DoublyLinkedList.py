@@ -4,7 +4,7 @@ class Node:
         self.next = None
         self.prev = None
         
-class LinkedList:
+class DoublyLinkedList:
     def __init__(self):
         self.head = None
     
@@ -170,3 +170,4 @@ class LinkedList:
         return
 """
 """
+
