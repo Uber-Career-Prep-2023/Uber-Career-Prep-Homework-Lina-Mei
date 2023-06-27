@@ -8,6 +8,7 @@ underlying data structure. For simplicity, you can assume the priority
 queue stores string elements with integer priorities. Start by copy-pasting 
 your heap implementation from question 2 and making modifications.
 
+Time taken:
 
 """
 class PriorityQueue:

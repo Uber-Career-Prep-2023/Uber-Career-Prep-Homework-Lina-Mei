@@ -12,7 +12,7 @@ every number in the 2 by 2 matrix at least once.
 The space complexity is O(min(m*n)) because the worse case scenario is if every [i][j] was a land, and we would have to
 perform dfs on every [i][j].
 
-25 minutes Total
+Time taken: 25 minutes Total
 
 Explanation:
 """
