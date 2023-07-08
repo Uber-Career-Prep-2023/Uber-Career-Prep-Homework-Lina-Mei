@@ -8,6 +8,18 @@ node of the graph stores an integer rather than a generic data type and that the
 are distinct. Implement a basic DFS and BFS searching for a target value and a topological 
 sort (using either DFS or Kahn’s algorithm).
 
+Time complexities:
+create - O(v) where v represents the number of total distinct nodes in the given list of nodes
+bfs/dfs - O(v) where v represents the number of total distinct nodes in the given list of nodes
+        because once we have traversed through a neighbor, we will not visit it again. Therefore the maximum
+        number of times we visit a node is once.
+
+Space complexities:
+create - O(v+e) where v represents the number of total distinct nodes in the given list of nodes 
+        and e represents a relation between two v's
+bfs/dfs - O(v) at worst because at its worst case scenario, only one element is connected with all the other elements and therefore
+        the queue will have to hold all the other elements all at once.
+topologicalSort - 
 """
 
 from collections import defaultdict

@@ -6,10 +6,10 @@ towns are connected by roads has 1 road network, and a state in which none of th
 connected by roads has 0 road networks.)
 
 Time taken: 30 minutes
-Time Complexity: O(nlogm) where m represents every town and n represents every network between two towns
+Time Complexity: O(v+e) where v represents every town and e represents every network between two towns
     This is because the number of town that we have to traverse through reduces and we will have to go through every edge
     to form the graph
-Space Complexity: O(m) because in our visited set, we have to store the # of towns
+Space Complexity: O(v) because in our visited set, we have to store the # of towns
 Data Structures: set
 Algorithm: Dijkstra's algo
 

@@ -3,7 +3,7 @@ Given a binary matrix in which 1s represent land and 0s represent water.
 Return the number of islands (contiguous 1s surrounded by 0s or the edge of the matrix).
 
 Time Complexity: O(m*n)
-Space Complexity: O(min(m*n))
+Space Complexity: O(m*n)
 Data Structure: 
 Algorithm: DFS
 Explanation:

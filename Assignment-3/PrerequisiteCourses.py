@@ -1,8 +1,8 @@
 """
 Given a list of courses that a student needs to take to complete their major and a map of courses to their prerequisites, 
 return a valid order for them to take their courses assuming they only take one course for their major at once.
-Time Complexity: O(n*logk) where n represents the number of required courses and k represents the number of relationships between courses
-Space Complexity: O(n) where n represents the number of required courses because stacks take up no additional space but we need a set that stores
+Time Complexity: O(v+e) where v represents the number of required courses and e represents the number of relationships between courses
+Space Complexity: O(v) where v represents the number of required courses because stacks take up no additional space but we need a set that stores
 all the required and visited courses
 Data Structure: Stack, set
 Algorithm: topological sort

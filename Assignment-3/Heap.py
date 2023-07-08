@@ -3,6 +3,15 @@ Write a min heap class according to the following API using an array as the unde
 (A max heap has the same implementation; you simply need to flip the direction of the comparators.) 
 For simplicity, you can assume that the heap holds integers rather than generic comparables.
 
+Time complexities:
+look up - o(1), retrieve top element is quick
+insertion - o(logn), heaps are split into 2, where left is smaller and right is bigger
+remove - o(logn), with every traversal to find the node to remove, 
+                you are dividing the # of elements to search through by 2, therefore half the work
+create - o(nlogn), same reason as above
+
+Space complexity:
+create - o(n) where n is number of elements
 """
 class Heap:
     arr = []
