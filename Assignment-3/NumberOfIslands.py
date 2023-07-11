@@ -2,15 +2,13 @@
 Given a binary matrix in which 1s represent land and 0s represent water. 
 Return the number of islands (contiguous 1s surrounded by 0s or the edge of the matrix).
 
-Time Complexity: O(m*n)
-Space Complexity: O(m*n)
-Data Structure: 
-Algorithm: DFS
-Explanation:
-The time complexity is O(m*n) where m is the # of rows and n is the # of cols because we have to traverse through
+Time Complexity: O(m*n) where m is the # of rows and n is the # of cols because we have to traverse through
 every number in the 2 by 2 matrix at least once.
-The space complexity is O(min(m*n)) because the worse case scenario is if every [i][j] was a land, and we would have to
+Space Complexity: O(m*n) because the worse case scenario is if every [i][j] was a land, and we would have to
 perform dfs on every [i][j].
+
+Data Structure: Array
+Algorithm: DFS
 
 Time taken: 25 minutes Total
 

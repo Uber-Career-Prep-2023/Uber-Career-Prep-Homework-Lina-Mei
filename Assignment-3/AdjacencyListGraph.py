@@ -19,7 +19,7 @@ create - O(v+e) where v represents the number of total distinct nodes in the giv
         and e represents a relation between two v's
 bfs/dfs - O(v) at worst because at its worst case scenario, only one element is connected with all the other elements and therefore
         the queue will have to hold all the other elements all at once.
-topologicalSort - 
+topologicalSort - same as dfs
 """
 
 from collections import defaultdict

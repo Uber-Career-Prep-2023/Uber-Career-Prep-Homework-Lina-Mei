@@ -6,22 +6,25 @@ Time complexity: O(n*logn)
 Space complexity: O(n)
 
 Explanation: 
-O(n*logn) time complexity where n represents k ->  We have to do convert maximum k times, and for every conversion
-when we use the built-in python function, k gets divided by 2 in order to retrieve the binary value.
-O(n) space complexity where n represents k -> we have to store k number of elements in the output array
+O(klog(k)) time complexity because the outer loop runs k times, while the inner loops perform division which will be log(k) time. 
+O(k) space complexity because we have to store k number of elements in the output array
 
-Data Structure: N/a
+Data Structure: Array
 Algorithm: N/a
 
 Assumptions: That k is non-negative
 """
 
 def firstKBinaryNumbers(k):
-    # Python built in function bin()
-    output = []
+    binary_numbers = []
     for i in range(k):
-        output.append(str(bin(i)[2:]))
-    return output
+        binary = ""
+        num = i
+        while num > 0:
+            binary = str(num % 2) + binary
+            num = num // 2
+        binary_numbers.append(binary if binary != "" else "0")
+    return binary_numbers
 
 def main():
     num = 5

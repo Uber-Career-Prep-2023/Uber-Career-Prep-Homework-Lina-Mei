@@ -3,18 +3,18 @@ Given an origin and a destination in a directed graph in which edges can be blue
 determine the length of the shortest path from the origin to the destination in which the 
 edges traversed alternate in color. Return -1 if no such path exists.
 
-Time Complexity: O(n*nlogn) where n is the number of nodes because once we make the graph, we have to loop through all the neighbors O(n)
-but with every neighbor, we keep track of visited neighbors within that O(logn)
-
-Space Complexity: O(V+E) where V is the number of nodes and E is the number of edges because we have to create the graph 
-and create a set to keep track of all visited nodes
-
+Time Complexity: 
+    O(V+E) where V represents the number of verticies and E represents the number of edges in the graph
+    This is because each node is visited once, and for each visited node, all its neighboring nodes are explored.
+Space Complexity: 
+    O(V+E) where V is the number of nodes and E is the number of edges because we have to create the graph
+    which is proportional to the number of edges, the queue and set takes up O(V) space as every place will be added only once
 Data Structure: Graph
-Algorithm: dfs
+Algorithm: bfs
 Time taken: Over 1 hour
 """
 from collections import defaultdict
-
+from collections import deque
 class Graph:
     links = defaultdict(list)
     
@@ -26,38 +26,24 @@ class Graph:
         # create directed graph
         # keep track of the # of path to reach destination from each possible starting node, use dfs to backtrack
         # if # of path is < shortest_path, then replace
-        
-        # create neighbors that has a list of all their neighbor nodes + colors
-        neighbors = defaultdict(list)
+        graph = defaultdict(list)
         for start, end, color in self.links:
-            neighbors[start].append((end, color))
-        
-        shortestPath = -1
-        # retrieving values in neighbors
-        for neighbor in neighbors[origin]:
-            # retrieving neighbors, color in neighbors[start]
-            (node, color) = neighbor
-            visited = set()
-            visited.add(node)
-            currCount = 1
-            shortestPath = self.dfs(visited, node, color, neighbors, currCount, shortestPath, destination)
-        return shortestPath
-
-
-    def dfs(self, visited, start, color, neighbors, currCount, shortestPath, destination):
-        visited.add(start)
-        # return if we have reached destination
-        if start == destination:
-            if currCount < shortestPath or shortestPath == -1:
-                shortestPath = currCount
-                return shortestPath
-        # skip paths that are either same color, or have already been to
-        for neighborColor in neighbors[start]:
-            (neighbor, c) = neighborColor
-            if c == color or neighbor in visited:
-                continue
-            shortestPath = self.dfs(visited, neighbor, c, neighbors, currCount+1, shortestPath, destination)
-        return shortestPath
+            graph[start].append((end, color))
+            
+        queue = deque([(origin, '', 0)])
+        visited = set()
+        while queue:
+            current_node, current_color, path_length = queue.popleft()
+            # Check if the current node is the destination
+            if current_node == destination:
+                return path_length
+            # Explore neighbors of the current node
+            for neighbor, neighbor_color in graph[current_node]:
+                if neighbor_color != current_color:
+                    if (neighbor, neighbor_color) not in visited:
+                        visited.add((neighbor, neighbor_color, path_length+1))
+                        queue.append((neighbor, neighbor_color, path_length+1))
+        return -1
     
 def main():
     arr = [('A', 'B', "blue"), 

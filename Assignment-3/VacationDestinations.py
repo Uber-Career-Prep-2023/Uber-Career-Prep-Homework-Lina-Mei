@@ -3,9 +3,11 @@ Given an origin city, a maximum travel time k, and pairs of destinations that ca
 from each other with corresponding travel times in hours, return the number of destinations within k 
 hours of the origin. Assume that having a stopover in a city adds an hour of travel time.
 
-Time Complexity: O(v) where n represents the number of neighbors the origin city is connected with, because once we traverse through the city,
+Time Complexity: 
+    O(v) where n represents the number of neighbors the origin city is connected with, because once we traverse through the city,
                         we won't visit it again. therefore we only go through each city once.
-Space Complexity: O(V+E) where V represents the number of cities in given list of inputs and E represents all the relations
+Space Complexity: 
+    O(V+E) where V represents the number of cities in given list of inputs and E represents all the relations
 Data Structure: queue
 Algorithm: bfs
 Time Taken: over 1 hour
