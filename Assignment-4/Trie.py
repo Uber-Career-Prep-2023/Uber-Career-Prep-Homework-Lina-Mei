@@ -70,12 +70,12 @@ class Trie:
             curr.validWord = False
                 
 
-# print("Trie.py tests ")
-# test = Trie()   
-# test.insert('hello')
-# print(test.search('hello')) # true
-# print(test.search('abc')) # false
-# test.remove('hello')
-# print(test.search('hello')) # false
+print("Trie.py tests ")
+test = Trie()   
+test.insert('hello')
+print(test.search('hello')) # true
+print(test.search('abc')) # false
+test.remove('hello')
+print(test.search('hello')) # false
 
         

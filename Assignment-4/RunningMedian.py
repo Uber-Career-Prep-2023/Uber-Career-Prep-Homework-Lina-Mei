@@ -1,23 +1,6 @@
 '''
 You will be given a stream of numbers, one by one. After each new number, return the median of the numbers so far.
 
-Examples (newest number at each step in bold):
-Input: 1
-Output: 1
-
-Input: 1, 11
-Output: 6
-
-Input: 1, 11, 4
-Output: 4
-
-Input: 1, 11, 4, 15
-Output: 7.5
-
-Input: 1, 11, 4, 15, 12
-Output: 11
-
-
 Approach: Maintain two heaps
 Time complexity: O(Nlogn) where N represents the total elements in the heaps because at its worst case, 
 we have to traverse through all elements of the heap and inserting elements into the heap takes O(logN) time
@@ -56,3 +39,22 @@ print(output.runningMedian(11)) # 6
 print(output.runningMedian(4)) # 4
 print(output.runningMedian(15)) # 7.5
 print(output.runningMedian(12)) # 11
+
+'''
+Examples (newest number at each step in bold):
+Input: 1
+Output: 1
+
+Input: 1, 11
+Output: 6
+
+Input: 1, 11, 4
+Output: 4
+
+Input: 1, 11, 4, 15
+Output: 7.5
+
+Input: 1, 11, 4, 15, 12
+Output: 11
+
+'''

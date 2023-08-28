@@ -14,16 +14,17 @@ Sum: 15
 Output: 3 (Options are: 5 2s & 1 5; 1 5 & 1 10; 3 5s)
 
 Approach: dp
-Time complexity:  
-Space complexity: 
-Time taken:
+Time complexity:  O(N*K) where N represents the number of coins in the coins array and K represents target
+because we iterate through every coin in the coins array and then we also iterate through K times
+Space complexity: O(K) because our dp array will store up to target + 1
+Time taken: 1hr+
 
 '''
 def coinChange(coins, target):
     dp = [0] * (target + 1)
     dp[0] = 1
     for coin in coins:
-        for i in range(coin, target + 1):
+        for i in range(coin, target + 1): #dp[i] represents the number of combinations that sum up to i.
             dp[i] += dp[i - coin]
 
     return dp[-1]
